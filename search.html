@@ -1,0 +1,418 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>JSIR - a JavaScript IR engine</title>
+        <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+        <link rel="stylesheet" type="text/css" href="jsir.css">
+        <script type="text/javascript" src="docs.js"></script>
+        <script type="text/javascript" src="idf.js"></script>
+        <script type="text/javascript" src="doclength.js"></script>
+        <script type="text/javascript" src="index_binary.js"></script>
+        <script type="text/javascript" src="index_tf.js"></script>
+        <script type="text/javascript" src="index_tfidf.js"></script>
+        <script type="text/javascript" src="topics.js"></script>
+        <script type="text/javascript" src="boolean.js"></script>
+        <script type="text/javascript" src="vector.js"></script>
+        <script type="text/javascript" src="bm25.js"></script>
+        <script type="text/javascript" src="customevent.js"></script>
+        <script type="text/javascript" src="frontend.js"></script>
+        <script type="text/javascript" src="evaluation.js"></script>
+    </head>
+    <body>
+        <div id="outerPanel">
+            <div id="leftPanel">
+                <div class="panel" id="resultPanel">
+                    <div>SEARCH RESULT</div>
+                    <div id="result"> 
+                        <table id="resultTableHeaders">
+                            <colgroup>
+                                <col class="col1">
+                                <col class="col2">
+                                <col class="col3">
+                                <col class="col4">
+                            </colgroup>
+                            <tr>
+                                <td>Pos</td>
+                                <td>Document title</td>
+                                <td>RSV</td>
+                                <td>Relevant?</td>
+                            </tr>
+                        </table>
+                        <div id="resultTableContainer">
+                            <table id="resultTable">
+                                <colgroup>
+                                    <col class="col1">
+                                    <col class="col2">
+                                    <col class="col3">
+                                    <col class="col4">
+                                </colgroup>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel" id="relevancePanel">
+                    <div>DOCUMENT RELEVANCE (TOP 40)</div>
+                    <table id="relevance">
+                        <tr id="bar">
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>5</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>10</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>15</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>20</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>25</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>30</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>35</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>40</td>
+                        </tr>
+                    </table>
+                </div>
+                <form onsubmit="return false">
+                    <div class="panel" id="searchPanel">
+                        <div>QUERY</div>
+                        <div style="margin-top: 6px; margin-left: 10px; width: 677px; height: 112px; padding: 3px; overflow: auto">
+                            <table border="1" cellpadding="3" id="topics"></table>
+                        </div>
+                        <div style="margin-top: 10px"><textarea style="position: relative; width: 678px; height: 80px; margin-top: 6px; margin-left: 10px" id="txtQuery"></textarea></div>
+                        <div style="margin-top: 8px; text-align: right">
+                            <a href="#" class="button" onclick="frontend.showResultWindow()">Copy</a> 
+                            <a href="#" class="button" onclick="document.getElementById('txtQuery').value=''; document.getElementById('txtQuery').focus()">Clear</a>
+                            <a href="#" onclick="frontend.search(document.getElementById('txtQuery').value)" class="button">Search</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="rightpanel">
+                <div class="panel" id="controlPanel">
+                    <div>STATISTICS</div>
+                    <table id="properties" style="margin-top: 10px" width="100%">
+                        <colgroup>
+                            <col class="col1">
+                            <col class="col2">
+                        </colgroup>
+                        <tr style="background-color: #F0F0F0">
+                            <th>Property</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>Model</td>
+                            <td onclick="frontend.dropdown(this, event)" data-field="model" data-options="['Vector Space Model', 'Okapi BM25', 'Boolean']">Vector Space Model</td>
+                        </tr>
+                        <tr>
+                            <td>Weighting</td>
+                            <td>Tf-idf</td>
+                        </tr>
+                        <tr>
+                            <td>DCV (recall)</td>
+                            <td onclick="frontend.editableText(this, event)" data-field="dcvr">200</td>
+                        </tr>
+                        <tr>
+                            <td>DCV (precision)</td>
+                            <td onclick="frontend.editableText(this, event)" data-field="dcvp">40</td>
+                        </tr>
+                        <tr>
+                            <td>Database</td>
+                            <td>Cystic Fibrosis</td>
+                        </tr>
+                        <tr>
+                            <td>Active topic</td>
+                            <td id="activeTopic"></td>
+                        </tr>
+                        <tr>
+                            <td>Retrieved</td>
+                            <td id="numRetrieved">0</td>
+                        </tr>
+                    </table>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="250" height="160" id="recalldiagram" style="margin-top: 20px">
+                    <defs>
+                        <filter x="0" y="0" id="i1" width="120%" height="120%">
+                            <feOffset result= "offOut" in="SourceAlpha" dx="3" dy="3"/>
+                            <feGaussianBlur result="blurOut" in="offOut" stdDeviation="2"/>
+                            <feBlend in="SourceGraphic" in2="blurOut" mode="normal"/>
+                        </filter>
+                        <linearGradient class="gradient" id="pie1" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgb(135,206,250);stop-opacity:1"></stop>
+                            <stop offset="100%" style="stop-color:rgb(70,70,255);stop-opacity:1"></stop>
+                        </linearGradient>
+                        <linearGradient class="gradient" id="pie2" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgb(240,165,0);stop-opacity:1"></stop>
+                            <stop offset="100%" style="stop-color:rgb(240,69,50);stop-opacity:1"></stop>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="125" cy="80" r="70" stroke="#606060" stroke-width="1.0" fill="white" />
+                    </svg>
+                    <div style="padding: 2px; border: 1px solid #E9ECFA; margin-top: 20px; margin-bottom: 10px; margin-left: 10px; margin-right: 14px">
+                        <table class="eval">
+                            <colgroup>
+                                <col class="col1">
+                                <col class="col2">
+                            </colgroup>
+                            <tr>
+                                <td>Recall:</td>
+                                <td id="recall">0.0%</td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #EAF2FF">Precision:</td>
+                                <td id="precision" style="background-color: #FDFDFD">0.0%</td>
+                            </tr>
+                            <tr>
+                                <td>Avg. precision:</td>
+                                <td id="avg_precision">0.0%</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" id="precisiondiagram" style="margin-top: 20px; margin-left: 10px; width: 255px; height: 210px">
+                    <defs>
+                    <linearGradient id="grad1" x1="100%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:rgb(240,240,240);stop-opacity:1" />
+                    </linearGradient>
+                    </defs>
+                    <rect x="23" y="10" width="220" height="180" fill="url(#grad1)" />
+                    <line x1="23" y1="190" x2="23" y2="10" stroke="#D0D0D0" stroke-width="0.8" />
+                    <line x1="23" y1="190" x2="243" y2="190" stroke="#D0D0D0" stroke-width="0.8" />
+                    <line x1="45" y1="190" x2="45" y2="10" stroke="#D0D0D0" stroke-width="0.8" />
+                    <line x1="23" y1="172" x2="243" y2="172" stroke="#D0D0D0" stroke-width="0.8" />
+                    <text x="45" y="205" fill="black" font-size="10" style="text-anchor: middle">10</text>
+                    <text x="18" y="172" fill="black" font-size="10" style="text-anchor: end; dominant-baseline: central">10</text>
+                    <line x1="67" y1="190" x2="67" y2="10" stroke="#D0D0D0" stroke-width="0.8" />
+                    <line x1="23" y1="154" x2="243" y2="154" stroke="#D0D0D0" stroke-width="0.8" />
+                    <text x="67" y="205" fill="black" font-size="10" style="text-anchor: middle">20</text>
+                    <text x="18" y="154" fill="black" font-size="10" style="text-anchor: end; dominant-baseline: central">20</text>
+                    <line x1="89" y1="190" x2="89" y2="10" stroke="#D0D0D0" stroke-width="0.8" />
+                    <line x1="23" y1="136" x2="243" y2="136" stroke="#D0D0D0" stroke-width="0.8" />
+                    <text x="89" y="205" fill="black" font-size="10" style="text-anchor: middle">30</text>
+                    <text x="18" y="136" fill="black" font-size="10" style="text-anchor: end; dominant-baseline: central">30</text>
+                    <line x1="111" y1="190" x2="111" y2="10" stroke="#D0D0D0" stroke-width="0.8" />
+                    <line x1="23" y1="118" x2="243" y2="118" stroke="#D0D0D0" stroke-width="0.8" />
+                    <text x="111" y="205" fill="black" font-size="10" style="text-anchor: middle">40</text>
+                    <text x="18" y="118" fill="black" font-size="10" style="text-anchor: end; dominant-baseline: central">40</text>
+                    <line x1="133" y1="190" x2="133" y2="10" stroke="#D0D0D0" stroke-width="0.8" />
+                    <line x1="23" y1="100" x2="243" y2="100" stroke="#D0D0D0" stroke-width="0.8" />
+                    <text x="133" y="205" fill="black" font-size="10" style="text-anchor: middle">50</text>
+                    <text x="18" y="100" fill="black" font-size="10" style="text-anchor: end; dominant-baseline: central">50</text>
+                    <line x1="155" y1="190" x2="155" y2="10" stroke="#D0D0D0" stroke-width="0.8" />
+                    <line x1="23" y1="82" x2="243" y2="82" stroke="#D0D0D0" stroke-width="0.8" />
+                    <text x="155" y="205" fill="black" font-size="10" style="text-anchor: middle">60</text>
+                    <text x="18" y="82" fill="black" font-size="10" style="text-anchor: end; dominant-baseline: central">60</text>
+                    <line x1="177" y1="190" x2="177" y2="10" stroke="#D0D0D0" stroke-width="0.8" />
+                    <line x1="23" y1="64" x2="243" y2="64" stroke="#D0D0D0" stroke-width="0.8" />
+                    <text x="177" y="205" fill="black" font-size="10" style="text-anchor: middle">70</text>
+                    <text x="18" y="64" fill="black" font-size="10" style="text-anchor: end; dominant-baseline: central">70</text>
+                    <line x1="199" y1="190" x2="199" y2="10" stroke="#D0D0D0" stroke-width="0.8" />
+                    <line x1="23" y1="46" x2="243" y2="46" stroke="#D0D0D0" stroke-width="0.8" />
+                    <text x="199" y="205" fill="black" font-size="10" style="text-anchor: middle">80</text>
+                    <text x="18" y="46" fill="black" font-size="10" style="text-anchor: end; dominant-baseline: central">80</text>
+                    <line x1="221" y1="190" x2="221" y2="10" stroke="#D0D0D0" stroke-width="0.8" />
+                    <line x1="23" y1="28" x2="243" y2="28" stroke="#D0D0D0" stroke-width="0.8" />
+                    <text x="221" y="205" fill="black" font-size="10" style="text-anchor: middle">90</text>
+                    <text x="18" y="28" fill="black" font-size="10" style="text-anchor: end; dominant-baseline: central">90</text>
+                    <line x1="243" y1="190" x2="243" y2="10" stroke="#D0D0D0" stroke-width="0.8" />
+                    <line x1="23" y1="10" x2="243" y2="10" stroke="#D0D0D0" stroke-width="0.8" />
+                    <text x="243" y="205" fill="black" font-size="10" style="text-anchor: middle">100</text>
+                    <text x="18" y="10" fill="black" font-size="10" style="text-anchor: end; dominant-baseline: central">100</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div id="documentWindow" style="display: none" onmousedown="frontend.startDragElement(event, this)" onmouseup="frontend.stopDragElement(event, this)" onmousemove="frontend.dragElement(event, this)">
+            <div style="text-align: right; background-color: #F0F0F0; padding-right: 5px; line-height: 14px">
+                <span class="close"><a onclick="frontend.closeDocumentWindow()" href="#"><img align="absmiddle" src="close.png"> Close</a></span>
+            </div>
+            <div id="documentTitle">&nbsp;</div>
+            <div id="documentText">&nbsp;</div>
+        </div>
+    </body>
+</html>
